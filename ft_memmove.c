@@ -6,7 +6,7 @@
 /*   By: crebert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 16:20:52 by crebert           #+#    #+#             */
-/*   Updated: 2019/11/04 17:10:40 by crebert          ###   ########.fr       */
+/*   Updated: 2019/11/04 18:41:26 by crebert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	if (destination < source)
 		while (len--)
 			*destination++ = *source++;
-	else
+	else if (destination > source)
 		while (len--)
-			*(destination + len) = *(source + len);
+			destination[len] = source[len];
 	return (dst);
 }

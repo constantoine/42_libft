@@ -6,7 +6,7 @@
 /*   By: crebert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 15:05:10 by crebert           #+#    #+#             */
-/*   Updated: 2019/11/04 15:34:21 by crebert          ###   ########.fr       */
+/*   Updated: 2019/11/04 20:04:30 by crebert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ int	ft_atoi(const char *str)
 			index++;
 	}
 	while (ft_isdigit(str[index]))
-		result += (result * 9) + (str[index++] - '0') * sign;
+	{
+		result *= 10;
+		result += (str[index++] - '0') * sign;
+	}
 	return (result);
 }

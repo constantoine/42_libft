@@ -6,7 +6,7 @@
 /*   By: crebert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 17:13:59 by crebert           #+#    #+#             */
-/*   Updated: 2019/11/04 17:27:24 by crebert          ###   ########.fr       */
+/*   Updated: 2019/11/04 20:14:26 by crebert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,5 @@
 
 int	ft_putchar(int c)
 {
-	return (write(1, &c, 1) < 0 ? EOF : (int)(unsigned char)c);
+	return (write(1, &c, 1) < 0 ? EOF : c);
 }
