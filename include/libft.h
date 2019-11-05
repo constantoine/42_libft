@@ -6,7 +6,7 @@
 /*   By: crebert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 12:15:47 by crebert           #+#    #+#             */
-/*   Updated: 2019/11/04 20:44:48 by crebert          ###   ########.fr       */
+/*   Updated: 2019/11/05 13:22:11 by crebert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,10 @@ void			ft_lstiter(t_list *lst, void (*f)(void *));
 t_list			*ft_lstmap(t_list *lst, void *(*f)(void *), void
 		(*del)(void *));
 
+void			ft_putstr_fd(char *s, int fd);
+void			ft_putendl_fd(char *s, int fd);
+void			ft_putchar_fd(char c, int fd);
+
 void			*ft_memset(void *b, int c, size_t len);
 void			ft_bzero(void *s, size_t n);
 void			*ft_calloc(size_t count, size_t size);
@@ -53,6 +57,7 @@ int				ft_putchar(int c);
 int				ft_putstr(const char *str);
 
 size_t			ft_strlen(const char *str);
+char			**ft_split(char const *s, char c);
 int				ft_atoi(const char *str);
 
 void			*ft_memcpy(void *dst, const void *src, size_t n);
