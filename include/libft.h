@@ -6,7 +6,7 @@
 /*   By: crebert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 12:15:47 by crebert           #+#    #+#             */
-/*   Updated: 2019/11/05 19:38:08 by crebert          ###   ########.fr       */
+/*   Updated: 2019/11/05 20:40:32 by crebert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,9 @@ char			*ft_strnstr(const char *haystack, const char *needle,
 char			*ft_strtrim(char const *s1, char const *set);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 char			*ft_strjoin(char const *s1, char const *s2);
+size_t			ft_strlcat(char *dst, const char *src, size_t dstsize);
+size_t			ft_strlcpy(char *dst, const char *src, size_t dstsize);
+char			*ft_substr(char const *s, unsigned int start, size_t len);
 
 int				ft_isspace(int c);
 int				ft_isprint(int c);
@@ -75,4 +78,6 @@ char			*ft_itoa(int n);
 
 void			*ft_memcpy(void *dst, const void *src, size_t n);
 void			*ft_memmove(void *dst, const void *src, size_t len);
+
+char			*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 #endif

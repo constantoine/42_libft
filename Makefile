@@ -6,7 +6,7 @@
 #    By: crebert <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/04 16:49:36 by crebert           #+#    #+#              #
-#    Updated: 2019/11/05 19:37:54 by crebert          ###   ########.fr        #
+#    Updated: 2019/11/05 20:30:38 by crebert          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,8 @@ SRC:= $(SRC) src/memory/ft_memcmp.c src/strings/ft_strchr.c
 SRC:= $(SRC) src/strings/ft_strrchr.c src/strings/ft_strnstr.c
 SRC:= $(SRC) src/numbers/ft_itoa.c src/strings/ft_strtrim.c
 SRC:= $(SRC) src/strings/ft_strncmp.c src/strings/ft_strjoin.c
+SRC:= $(SRC) src/strings/ft_strlcat.c src/strings/ft_strlcpy.c
+SRC:= $(SRC) src/strings/ft_substr.c src/func_ptr/ft_strmapi.c
 SRC_BONUS= src/list/ft_lstnew.c src/list/ft_lstadd_front.c
 SRC_BONUS:= $(SRC_BONUS) src/list/ft_lstsize.c src/list/ft_lstlast.c
 SRC_BONUS:= $(SRC_BONUS) src/list/ft_lstadd_back.c src/list/ft_lstdelone.c
