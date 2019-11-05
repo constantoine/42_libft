@@ -1,23 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: crebert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/05 12:20:06 by crebert           #+#    #+#             */
-/*   Updated: 2019/11/05 15:40:21 by crebert          ###   ########.fr       */
+/*   Created: 2019/11/05 18:35:44 by crebert           #+#    #+#             */
+/*   Updated: 2019/11/05 19:25:41 by crebert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include <limits.h>
 #include "libft.h"
 
-void	ft_putendl_fd(char *s, int fd)
+char	*ft_itoa(int nb)
 {
-	if (s)
+	int		index;
+	int		nbcpy;
+	char	num[12];
+
+	nbcpy = nb;
+	index = 10;
+	num[11] = 0;
+	num[10] = '0';
+	if (nb == -2147483648)
+		num[index--] = '8';
+	if (nb == -2147483648)
+		nb /= 10;
+	if (nb < 0)
+		nb *= -1;
+	while (nb > 0)
 	{
-		write(fd, s, ft_strlen(s));
-		write(fd, "\n", 1);
+		num[index] = nb % 10 + '0';
+		nb /= 10;
+		index--;
 	}
+	if (nbcpy < 0)
+		num[index] = '-';
+	else if (nbcpy != 0)
+		index++;
+	return (ft_strdup(&num[index]));
 }

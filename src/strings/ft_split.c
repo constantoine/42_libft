@@ -6,12 +6,14 @@
 /*   By: crebert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 14:53:50 by crebert           #+#    #+#             */
-/*   Updated: 2019/11/05 13:58:23 by crebert          ###   ########.fr       */
+/*   Updated: 2019/11/05 19:42:20 by crebert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <unistd.h>
 #include "libft.h"
+#include <stdio.h>
 
 static size_t	ft_strlen_local(char const *str, char c)
 {
@@ -33,7 +35,7 @@ static char		*ft_strdup_local(char const *s, char c)
 	if (!(str = malloc(sizeof(char) * len)))
 		return (NULL);
 	index = 0;
-	while (s[index])
+	while (s[index] && s[index] != c)
 	{
 		str[index] = s[index];
 		index++;
@@ -42,36 +44,44 @@ static char		*ft_strdup_local(char const *s, char c)
 	return (str);
 }
 
-char			**ft_split(char const *s, char c)
+static char		**ft_split_local(char const *s, char c, int count, char **ptr)
 {
-	char	**ptr;
 	size_t	i;
 	size_t	index_ptr;
-	int		count;
 
-	count = 1;
-	i = 0;
-	if (s[0] == c || !s[0])
-		count = 0;
-	while (s[++i])
-		if (s[i] == c && s[i - 1] != c)
-			count++;
-	if (!(ptr = malloc(sizeof(char*) * (count + 1))))
-		return (NULL);
 	i = 0;
 	index_ptr = 0;
 	while (s[i])
 	{
 		if (s[i] != c)
+		{
 			if (!(ptr[index_ptr++] = ft_strdup_local(&s[i], c)))
 				return (NULL);
+			i += ft_strlen_local(&s[i], c) - 2;
+		}
 		i++;
 	}
 	ptr[count] = 0;
 	return (ptr);
 }
 
-int	main(int ac, char **av)
+char			**ft_split(char const *s, char c)
 {
-	
+	char	**ptr;
+	size_t	i;
+	int		count;
+
+	if (!s)
+		return (NULL);
+	count = 1;
+	i = 0;
+	if (s[0] == c || !s[0])
+		count = 0;
+	while (s[++i])
+		if (s[i - 1] == c && s[i] != c)
+			count++;
+	if (!(ptr = malloc(sizeof(char*) * (count + 1))))
+		return (NULL);
+	ptr[count] = 0;
+	return (ft_split_local(s, c, count, ptr));
 }

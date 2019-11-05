@@ -6,7 +6,7 @@
 #    By: crebert <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/04 16:49:36 by crebert           #+#    #+#              #
-#    Updated: 2019/11/05 13:22:07 by crebert          ###   ########.fr        #
+#    Updated: 2019/11/05 19:37:54 by crebert          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,12 @@ SRC:= $(SRC) src/strings/ft_strdup.c src/strings/ft_putchar.c
 SRC:= $(SRC) src/strings/ft_putstr.c src/is/ft_isascii.c
 SRC:= $(SRC) src/is/ft_isprint.c src/files/ft_putstr_fd.c
 SRC:= $(SRC) src/files/ft_putendl_fd.c src/files/ft_putchar_fd.c
-SRC:= $(SRC) src/strings/ft_split.c
+SRC:= $(SRC) src/strings/ft_split.c src/numbers/ft_putnbr_fd.c
+SRC:= $(SRC) src/memory/ft_memchr.c src/memory/ft_memccpy.c
+SRC:= $(SRC) src/memory/ft_memcmp.c src/strings/ft_strchr.c
+SRC:= $(SRC) src/strings/ft_strrchr.c src/strings/ft_strnstr.c
+SRC:= $(SRC) src/numbers/ft_itoa.c src/strings/ft_strtrim.c
+SRC:= $(SRC) src/strings/ft_strncmp.c src/strings/ft_strjoin.c
 SRC_BONUS= src/list/ft_lstnew.c src/list/ft_lstadd_front.c
 SRC_BONUS:= $(SRC_BONUS) src/list/ft_lstsize.c src/list/ft_lstlast.c
 SRC_BONUS:= $(SRC_BONUS) src/list/ft_lstadd_back.c src/list/ft_lstdelone.c

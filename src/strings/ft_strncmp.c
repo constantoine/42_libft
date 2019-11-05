@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: crebert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/05 12:20:06 by crebert           #+#    #+#             */
-/*   Updated: 2019/11/05 15:40:21 by crebert          ###   ########.fr       */
+/*   Created: 2019/11/05 19:19:16 by crebert           #+#    #+#             */
+/*   Updated: 2019/11/05 19:23:38 by crebert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include "libft.h"
 
-void	ft_putendl_fd(char *s, int fd)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	if (s)
+	size_t	index;
+
+	index = 0;
+	while (s1[index] && index < n)
 	{
-		write(fd, s, ft_strlen(s));
-		write(fd, "\n", 1);
+		if (s1[index] != s2[index])
+			return ((unsigned char)s1[index] - (unsigned char)s2[index]);
+		index++;
 	}
+	return ((unsigned char)*s1 - (unsigned char)*s2);
 }

@@ -6,7 +6,7 @@
 /*   By: crebert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 20:43:48 by crebert           #+#    #+#             */
-/*   Updated: 2019/11/05 12:26:41 by crebert          ###   ########.fr       */
+/*   Updated: 2019/11/05 16:32:22 by crebert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	t_list	*elem;
 	t_list	*prev;
 	t_list	*start;
+	void	*con;
 
 	if (!lst)
 		return (NULL);
@@ -25,7 +26,8 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	prev = NULL;
 	while (lst)
 	{
-		if (!(elem = ft_lstnew((*f)(lst->content))))
+		con = (*f)(lst->content);
+		if (!(elem = ft_lstnew(con)))
 			return (NULL);
 		if (!start)
 			start = elem;
