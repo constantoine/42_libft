@@ -6,7 +6,7 @@
 #    By: crebert <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/04 16:49:36 by crebert           #+#    #+#              #
-#    Updated: 2019/11/07 19:34:57 by crebert          ###   ########.fr        #
+#    Updated: 2019/11/07 19:53:45 by crebert          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,15 +37,15 @@ HEAD=libft.h
 OBJ_BONUS= $(SRC_BONUS:.c=.o)
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -Iinclude
-EXEC=libft.a
+NAME=libft.a
 
-all: $(EXEC)
+all: $(NAME)
 
-bonus: $(EXEC) $(OBJ_BONUS)
-	ar rcs $(EXEC) $(OBJ_BONUS)
+bonus: $(NAME) $(OBJ_BONUS)
+	ar rcs $(NAME) $(OBJ_BONUS)
 
-$(EXEC): $(HEAD) $(OBJ)
-	ar rcs $(EXEC) $(OBJ)
+$(NAME): $(HEAD) $(OBJ)
+	ar rcs $(NAME) $(OBJ)
 
 %.o: %.c %.h
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -56,6 +56,6 @@ clean:
 	rm -rf $(OBJ) $(OBJ_BONUS)
 
 fclean: clean
-			rm -rf $(EXEC)
+			rm -rf $(NAME)
 
 .PHONY: clean fclean re all bonus
