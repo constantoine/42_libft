@@ -6,7 +6,7 @@
 /*   By: crebert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 14:53:50 by crebert           #+#    #+#             */
-/*   Updated: 2019/11/05 19:42:20 by crebert          ###   ########.fr       */
+/*   Updated: 2019/11/07 19:25:17 by crebert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,12 @@ static char		**ft_split_local(char const *s, char c, int count, char **ptr)
 		if (s[i] != c)
 		{
 			if (!(ptr[index_ptr++] = ft_strdup_local(&s[i], c)))
+			{
+				index_ptr--;
+				while (--index_ptr)
+					free(ptr[index_ptr]);
 				return (NULL);
+			}
 			i += ft_strlen_local(&s[i], c) - 2;
 		}
 		i++;
@@ -83,5 +88,7 @@ char			**ft_split(char const *s, char c)
 	if (!(ptr = malloc(sizeof(char*) * (count + 1))))
 		return (NULL);
 	ptr[count] = 0;
-	return (ft_split_local(s, c, count, ptr));
+	if (!(ptr = ft_split_local(s, c, count, ptr)))
+		free(ptr);
+	return (ptr);
 }

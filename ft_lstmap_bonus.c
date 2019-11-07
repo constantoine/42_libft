@@ -6,14 +6,20 @@
 /*   By: crebert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 20:43:48 by crebert           #+#    #+#             */
-/*   Updated: 2019/11/06 17:43:35 by crebert          ###   ########.fr       */
+/*   Updated: 2019/11/07 19:35:45 by crebert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+static	t_list	*ft_lstclear_local(t_list **start, void (*del)(void *))
+{
+	ft_lstclear(start, (*del));
+	return (NULL);
+}
+
+t_list			*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*elem;
 	t_list	*prev;
@@ -28,14 +34,15 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	{
 		con = (*f)(lst->content);
 		if (!(elem = ft_lstnew(con)))
-			return (NULL);
+			return (ft_lstclear_local(&start, (*del)));
 		if (!start)
 			start = elem;
 		if (prev)
 			prev->next = elem;
 		prev = elem;
 		elem = elem->next;
-		(*del)(lst->content);
+		if (!con)
+			(*del)(lst->content);
 		lst = lst->next;
 	}
 	return (start);
