@@ -6,22 +6,20 @@
 /*   By: cleo <cleo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 15:05:10 by crebert           #+#    #+#             */
-/*   Updated: 2020/05/01 21:53:07 by cleo             ###   ########.fr       */
+/*   Updated: 2020/05/01 22:14:38 by cleo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 int	ft_atoi(const char *str)
 {
 	int		sign;
 	int		result;
 
-	while ((sign = 1) && ft_isspace(*str))
+	while ((sign = 1) && ((*str >= 9 && *str <= 13) || *str == 32))
 		str++ && (result = 0);
 	if (*str == '+' || (*str == '-' && (sign = -1)))
 		str++;
-	while (ft_isdigit(*str))
+	while (*str >= '0' && *str <= '9')
 		result = result * 10 + (*str++ - '0') * sign;
 	return (result);
 }
