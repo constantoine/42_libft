@@ -17,12 +17,10 @@
 void	*ft_calloc(size_t count, size_t size)
 {
 	void	*ptr;
-	char	*str;
 
 	if (not(ptr = malloc(count * size)))
 		return (NULL);
-	str = (char *)ptr;
-	str[0] = 0;
+	((char *)ptr)[0] = 0;
 	ft_bzero(ptr, count * size);
 	return (ptr);
 }
