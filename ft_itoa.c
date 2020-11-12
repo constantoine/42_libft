@@ -24,7 +24,7 @@ char	*ft_itoa(int nb)
 	index = 48;
 	num[49] = 0;
 	num[index] = '0';
-	if (nb == INT_MIN && (num[index--] = '0' + 10 - (INT_MIN % 10)))
+	if (nb == INT_MIN && (num[index--] = '0' + ((unsigned)INT_MIN) % 10))
 		nb /= 10;
 	if (nb < 0)
 		nb *= -1;
